@@ -28,9 +28,9 @@ function select(name, path) {
 }
 
 module.exports = {
-    name: 'core.plugin.tree',
+    name: 'core.loader.tree',
     dependencies: [
-        'core.tree'
+        'core.plugin.tree'
     ],
     init(definition, done) {
 
