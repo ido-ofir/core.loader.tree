@@ -43,6 +43,7 @@ module.exports = {
                 if(!plugin.set) plugin.set = set.bind(core, name);
                 if(!plugin.get) plugin.get = get.bind(core, name);
                 if(!plugin.select) plugin.select = select.bind(core, name);
+                // hello
                 this.tree.set(['plugins', name], definition.tree);
             }
 
