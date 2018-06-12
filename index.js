@@ -27,6 +27,13 @@ function select(name, path) {
     return this.tree.select(['plugins', name].concat(path));
 }
 
+function bind(name, path, render) {
+    if(!this.isArray(path)){
+        path = [path];
+    }
+    return this.bind(['plugins', name].concat(path), render);
+}
+
 module.exports = {
     name: 'core.loader.tree',
     dependencies: [
@@ -43,7 +50,7 @@ module.exports = {
                 if(!plugin.set) plugin.set = set.bind(core, name);
                 if(!plugin.get) plugin.get = get.bind(core, name);
                 if(!plugin.select) plugin.select = select.bind(core, name);
-                // hello
+                if(!plugin.bind) plugin.bind = bind.bind(core, name);
                 this.tree.set(['plugins', name], definition.tree);
             }
 
