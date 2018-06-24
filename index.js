@@ -27,11 +27,25 @@ function select(name, path) {
     return this.tree.select(['plugins', name].concat(path));
 }
 
-function bind(name, path, render) {
-    if(!this.isArray(path)){
+function namespace(name, path){
+    if(!Array.isArray(path)){
         path = [path];
     }
-    return this.bind(['plugins', name].concat(path), render);
+    return ['plugins', name].concat(path)
+}
+
+function bind(name, path, render) {
+    var result;
+    if(this.isObject(path)){
+        result = { ...path };
+        for(var m in result){
+            result[m] = namespace(name, result[m]);
+        }
+    }
+    else{
+        result = namespace(name, path);
+    }
+    return this.bind(result, render);
 }
 
 module.exports = {
