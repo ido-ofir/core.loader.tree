@@ -37,7 +37,7 @@ function namespace(name, path){
 function bind(name, path, render) {
     var result;
     if(this.isObject(path)){
-        result = { ...path };
+        result = Object.assign({}, path);
         for(var m in result){
             result[m] = namespace(name, result[m]);
         }
