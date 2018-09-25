@@ -12,7 +12,7 @@ core.plugin(
     require('core.loader.tree')
 );
 
-// plugins can now declare components on the plugin definition object:
+// plugins can now declare a tree on the plugin definition object:
 core.plugin({
     name: 'test',
     tree: {
