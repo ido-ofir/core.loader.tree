@@ -34,7 +34,7 @@ function namespace(name, path){
     return ['plugins', name].concat(path)
 }
 
-function bind(name, path, render) {
+function bind(name, path, render, props) {
     var result;
     if(this.isObject(path)){
         result = Object.assign({}, path);
@@ -45,7 +45,7 @@ function bind(name, path, render) {
     else{
         result = namespace(name, path);
     }
-    return this.bind(result, render);
+    return this.bind(result, render, props);
 }
 
 module.exports = {
